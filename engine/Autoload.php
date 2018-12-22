@@ -1,24 +1,17 @@
 <?php
 
+namespace app\engine;
+
+//define('ROOT_DIR', __DIR__ . "/../");
+
 class Autoload
 {
-    private $path = [
-      'model',
-      'engine',
-      'interfaces'
-    ];
-
     public function loadClass($className) {
-        foreach ($this->path as $path) {
-
-            $fileName = "../{$path}/{$className}.php";
-            //var_dump($fileName);
+            $fileName = ROOT_DIR . "{$className}.php";
+            $fileName = str_replace(["/app","\\"],['', '/'],$fileName);
+            var_dump($fileName);
             if (file_exists($fileName)) {
-                include $fileName;
-                break;
+                include_once $fileName;
             }
-        }
-
-
     }
 }
