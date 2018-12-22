@@ -7,7 +7,11 @@
  */
 
 namespace app\traits;
-
+/**
+ * Trait Cartdata
+ * @package app\traits
+ * Трейт для Cart и Product для исключения повторения кода
+ */
 
 trait Cartdata
 {
@@ -16,7 +20,7 @@ trait Cartdata
     private $totalPrice;
     private $idUser;
     private $date;
-
+    /*********---getters&setters----****/
     public function setId($id){$this->id = $id;}
     public function setProducts($products){$this->products = $products;}
     public function setIdUser($idUser){$this->idUser = $idUser;}
@@ -26,7 +30,7 @@ trait Cartdata
     public function getTotalPrice(){return $this->totalPrice;}
     public function getIdUser(){return $this->idUser;}
     public function getDate(){return $this->date;}
-
+    /****---- Расчет цены корзины(заказа)----*******/
     public  function countTotalPrice(array $product){
         //пока заглушка
         return 355;
