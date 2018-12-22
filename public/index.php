@@ -10,4 +10,4 @@ spl_autoload_register([new \app\engine\Autoload(), 'loadClass']);
 echo __DIR__;
 $product = new Products(new Db());
 
-var_dump($product);
+var_dump($product);//viev product
