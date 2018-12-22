@@ -2,8 +2,6 @@
 
 namespace app\engine;
 
-//define('ROOT_DIR', __DIR__ . "/../");
-
 class Autoload
 {
     public function loadClass($className) {
