@@ -1,11 +1,6 @@
 <?php
 
 namespace app\model {
-    /**
-     * Class Products
-     * @package app\model
-     *
-     */
 
     class Products extends Model
     {
@@ -14,8 +9,7 @@ namespace app\model {
         public $description;
         public $price;
         /****---- function from interface IModel----*******/
-        public function getTableName()
-        {
+        public function getTableName(){
             return "product";
         }
 
