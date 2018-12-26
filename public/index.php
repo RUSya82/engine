@@ -7,7 +7,9 @@ use app\engine\Db; //можно и так
 
 spl_autoload_register([new \app\engine\Autoload(), 'loadClass']);
 
-echo __DIR__;
-$product = new Products(new Db());
 
-var_dump($product);//viev product
+$product = new Products();
+
+//var_dump($product);//viev product
+var_dump($product->db->getConnection());
+var_dump($product->db->queryAll("SELECT * FROM products"));
