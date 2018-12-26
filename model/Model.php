@@ -17,23 +17,23 @@ abstract class Model implements IModel
     }
 
     public function getOne($id) {
-        $tableName = getTableName();
-        $sql = "SELECT * FROM {$tableName} WHERE id = {$id}";
-        return $this->db->queryOne($sql);
+        $tableName = $this->getTableName();
+        var_dump($tableName);
+        $sql = "SELECT * FROM {$tableName} WHERE id = :id";
+        return $this->db->queryOne($sql, [':id' => $id]);
     }
 
     public function getAll() {
-        $tableName = getTableName();
+        $tableName = $this->getTableName();
         $sql = "SELECT * FROM {$tableName}";
         return $this->db->queryAll($sql);
     }
     abstract public function getTableName();
     public function delete()
     {
-        //TODO удаление
-        //обратите внимание, что не нужно тут передавать id удаляемого объекта
-        //обеспечьте удаление себя типа так $Product->delete()
-        //т.е. объект чтобы удалил в таблице в БД самого себя, id уже есть в public свойстве удаляемого объекта
+        $tableName = $this->getTableName();
+        $sql = "DELETE FROM {$tableName} WHERE id = :id";
+        return $this->db->execute($sql, [':id'=>$this->id]);
     }
     public function insert()
     {

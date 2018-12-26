@@ -10,7 +10,7 @@ namespace app\model {
         public $price;
         /****---- function from interface IModel----*******/
         public function getTableName(){
-            return "product";
+            return "products";
         }
 
     }

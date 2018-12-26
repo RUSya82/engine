@@ -9,7 +9,8 @@ spl_autoload_register([new \app\engine\Autoload(), 'loadClass']);
 
 
 $product = new Products();
-
+//$product->id = 9;
+//$product->delete();
 //var_dump($product);//viev product
-var_dump($product->db->getConnection());
-var_dump($product->db->queryAll("SELECT * FROM products"));
+//var_dump($product->getAll());
+
