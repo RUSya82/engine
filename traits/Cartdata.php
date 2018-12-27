@@ -20,6 +20,8 @@ trait Cartdata
     private $totalPrice;
     private $idUser;
     private $date;
+
+
     /*********---getters&setters----****/
     public function setId($id){$this->id = $id;}
     public function setProducts($products){$this->products = $products;}

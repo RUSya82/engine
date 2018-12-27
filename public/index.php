@@ -19,10 +19,17 @@ $product = new Products(null, 'dfhjfgk', 'Nifgjfgjke',650, 6,2);
 //}
 //echo $product->getFields() . "<br>";
 //echo $product->getValues();
-$product->insert();
-$category = new \app\model\Category(null, 'Санки');
-$category->insert();
+//$product->insert();
+//$category = new \app\model\Category(null, 'Санки');
+//$category->insert();
 //$product->id = 9;
 //$product->delete();
+$cart = new \app\model\Cart(null,['35'=>3,'45'=>4,'66'=>5],null,12,'2018-12-27');
+//$cart->setIdUser(35);
+//$cart->setProducts(['15'=>2,'65'=>2]);
+//var_dump($cart);
+//$cart->insert();
+$order = new \app\model\Order(null,['35'=>3,'45'=>4,'66'=>5],null,12,'2018-12-27','sefgweg');
+$order->insert();
 
 

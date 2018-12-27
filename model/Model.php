@@ -70,13 +70,10 @@ abstract class Model implements IModel
         return $tmp;
     }
     public  function getParams() : array {
-        //echo "input inti pa";
         $params =[];
         foreach ($this->columns as $val){
             echo $val."<br>";
             $params[':'. $val] = $this->$val;
-            //var_dump($this->$val);
-            echo $params[':'. $val] . "<br>";
         }
         var_dump($params);
         return $params;

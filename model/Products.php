@@ -11,9 +11,6 @@ namespace app\model {
         protected $customer_id;
         protected $category_id;
 
-        /**
-         * @param null $id
-         */
         public function setId($id): void
         {
             $this->id = $id;
