@@ -2,7 +2,11 @@
 
 namespace app\model;
 
-
+/**
+ * Class Category
+ * @package app\model
+ *
+ */
 class Category extends Model
 {
     protected $id;

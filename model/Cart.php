@@ -1,11 +1,19 @@
 <?php
 namespace app\model;
-
+/**
+ * Class Cart
+ * @package app\model
+ * $products - сериализованный массив типа ['id'=>количество] в строку
+ * $totalPrice - цена все корзины
+ * $idUser - id покупателя
+ * $date - Дата
+ * $columns - массив с полями БД
+ */
 class  Cart extends Model{
 
     protected $id;
-    protected $products;//сериализованная строка для записи в БД
-    protected $totalPrice;//цена всей корзины
+    protected $products;
+    protected $totalPrice;
     protected $idUser;
     protected $date;
     protected $columns = ['id', 'products','totalPrice','idUser','date'];
