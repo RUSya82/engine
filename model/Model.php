@@ -57,7 +57,7 @@ abstract class Model implements IModel
     public function insert()
     {
         $sql = "INSERT INTO {$this->getTableName()} ({$this->getFields()}) VALUES ({$this->getValues()})";
-        var_dump($sql);
+        //var_dump($sql);
         return $this->db->execute($sql, $this->getParams());
     }
 
@@ -69,7 +69,7 @@ abstract class Model implements IModel
     public function update()
     {
         $sql = "UPDATE {$this->getTableName()} SET {$this->getUpdateFields()} WHERE id = :id";
-        var_dump($sql);
+        //var_dump($sql);
         return $this->db->execute($sql, $this->getParams());
 
     }
@@ -84,7 +84,7 @@ abstract class Model implements IModel
             $tmp .= " $val = :$val,";
         }
         $tmp = substr_replace( $tmp, '', -1);
-        var_dump($tmp);
+        //var_dump($tmp);
         return $tmp;
     }
     /**
