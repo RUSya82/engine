@@ -29,9 +29,9 @@ abstract class Model implements IModel
         return $this->db->queryAll($sql);
     }
     abstract public function getTableName();
-    abstract public  function getValues() : string;
-    abstract public function getFields();
-    abstract public  function getParams() : array;
+//    abstract public  function getValues() : string;
+//    abstract public function getFields();
+//    abstract public  function getParams() : array;
     public function delete()
     {
         $tableName = $this->getTableName();
@@ -41,6 +41,7 @@ abstract class Model implements IModel
     public function insert()
     {
         $sql = "INSERT INTO {$this->getTableName()} ({$this->getFields()}) VALUES ({$this->getValues()})";
+        var_dump($sql);
         return $this->db->execute($sql, $this->getParams());
     }
 
@@ -56,6 +57,29 @@ abstract class Model implements IModel
         //TODO изменить данные
         //если успеете, хотя бы подумать
         //это уже если совсем все что выше просто и понятно
+    }
+    public function getFields() : string {
+
+        return implode(', ', $this->columns);
+    }
+    public  function getValues() : string {
+        $tmp = '';
+        $tmp = implode( ', :',$this->columns);
+        $tmp = ':' . $tmp;
+        var_dump($tmp);
+        return $tmp;
+    }
+    public  function getParams() : array {
+        //echo "input inti pa";
+        $params =[];
+        foreach ($this->columns as $val){
+            echo $val."<br>";
+            $params[':'. $val] = $this->$val;
+            //var_dump($this->$val);
+            echo $params[':'. $val] . "<br>";
+        }
+        var_dump($params);
+        return $params;
     }
 
 }

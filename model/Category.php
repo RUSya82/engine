@@ -5,8 +5,21 @@ namespace app\model;
 
 class Category extends Model
 {
-    private $id;
-    private $name;
+    protected $id;
+    protected $name;
+    protected $columns = ['id', 'name'];
+
+    /**
+     * Category constructor.
+     * @param $id
+     * @param $name
+     */
+    public function __construct($id = null, $name = null)
+    {
+        parent::__construct();
+        $this->id = $id;
+        $this->name = $name;
+    }
 
     public function getId(){return $this->id;}
     public function setId($id){$this->id = $id;}
@@ -14,6 +27,6 @@ class Category extends Model
     public function setName($name){$this->name = $name;}
     public function getTableName()
     {
-        return 'products';
+        return 'category';
     }
 }
