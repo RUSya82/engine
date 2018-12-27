@@ -7,6 +7,9 @@ class Category extends Model
 {
     protected $id;
     protected $name;
+    /**
+     * @var array массив с названиями полей в БД
+     */
     protected $columns = ['id', 'name'];
 
     /**

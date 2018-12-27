@@ -8,21 +8,29 @@ use \app\interfaces\IModel as IModel;
 abstract class Model implements IModel
 {
     public $db;
-
-
+    protected $columns = []; // тут не используется
+    /*
+     * массив columns - это список полей таблицы БД, ввёл для того, чтобы можно было в этом абстрактном классе прописать
+     *  все нужные служебные методы,
+     * а в каждом потомке просто будет свой columns, точнее заполнен по своему. Понимаю, что это наверное своего рода костыль
+     * но ничего другого я придумать не смог(
+    */
 
     public function __construct()
     {
        $this->db = Db::getInstance();
     }
 
+    /**
+     * возвращает объект вызвавшего класса, с заполненными полями из БД
+     * @param $id - id записи в БД
+     * @return mixed - объект класса, который вызвал функцию
+     */
     public function getOne($id) {
-        $tableName = $this->getTableName();
-        //var_dump($tableName);
-        $sql = "SELECT * FROM {$tableName} WHERE id = :id";
-        $class = get_class($this);
-        echo $class;
-        return $this->db->queryObj($sql, [':id' => $id], $class);
+        $sql = "SELECT * FROM {$this->getTableName()} WHERE id = :id";
+        $obj = $this->db->query($sql, [':id'=>$id]);
+        $obj -> setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, get_class($this));
+        return $obj->fetch();
     }
 
     public function getAll() {
@@ -31,15 +39,21 @@ abstract class Model implements IModel
         return $this->db->queryAll($sql);
     }
     abstract public function getTableName();
-//    abstract public  function getValues() : string;
-//    abstract public function getFields();
-//    abstract public  function getParams() : array;
+
+    /**
+     * Удаление записи в БД по id
+     * @return mixed
+     */
     public function delete()
     {
-        $tableName = $this->getTableName();
-        $sql = "DELETE FROM {$tableName} WHERE id = :id";
+        $sql = "DELETE FROM {$this->getTableName()} WHERE id = :id";
         return $this->db->execute($sql, [':id'=>$this->id]);
     }
+
+    /**
+     * Вставка объекта(его данных) в БД
+     * @return mixed
+     */
     public function insert()
     {
         $sql = "INSERT INTO {$this->getTableName()} ({$this->getFields()}) VALUES ({$this->getValues()})";
@@ -59,34 +73,49 @@ abstract class Model implements IModel
         return $this->db->execute($sql, $this->getParams());
 
     }
+
+    /**
+     * подготавливает строку типа id = :id, name = :name, description = :description для функции update()
+     * @return mixed|string
+     */
     public function getUpdateFields(){
         $tmp = '';
         foreach ($this->columns as $val){
             $tmp .= " $val = :$val,";
         }
-
         $tmp = substr_replace( $tmp, '', -1);
-        //var_dump($tmp);
+        var_dump($tmp);
         return $tmp;
     }
+    /**
+     * подготавливает строку из массива columns для запроса в виде 'id, name, description ...'
+     * @return string - строка из массива columns, разделённая запятыми
+     */
     public function getFields() : string {
 
         return implode(', ', $this->columns);
     }
+
+    /**
+     * @return string
+     */
     public  function getValues() : string {
-        $tmp = '';
         $tmp = implode( ', :',$this->columns);
         $tmp = ':' . $tmp;
-        var_dump($tmp);
+        //var_dump($tmp);
         return $tmp;
     }
+
+    /**
+     * Функция возвращает массив параметров для запроса через PDO вида [':id'=>2, и.т.д]
+     * @return array
+     */
     public  function getParams() : array {
         $params =[];
         foreach ($this->columns as $val){
-            //echo $val."<br>";
             $params[':'. $val] = $this->$val;
         }
-        var_dump($params);
+        //var_dump($params);
         return $params;
     }
 

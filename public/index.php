@@ -9,6 +9,12 @@ spl_autoload_register([new \app\engine\Autoload(), 'loadClass']);
 
 $product = (new Products())->getOne(6);
 var_dump($product);
+$order = (new \app\model\Order())->getOne(2);
+var_dump($order);
+$cart = (new \app\model\Cart()) -> getOne(2);
+var_dump($cart);
+$category = (new \app\model\Category()) ->getOne(2);
+var_dump($category);
 //$product = new Products(7, 'xcvuijhv', 'Nifgjfgjke',650, 6,2);
 //$i = 0;
 //foreach ($product as $key=>$value){

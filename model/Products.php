@@ -10,7 +10,7 @@ namespace app\model {
         protected $price;
         protected $customer_id;
         protected $category_id;
-
+        /**********----getters&setters----**********/
         public function setId($id): void{$this->id = $id;}
         public function setName($name): void{$this->name = $name;}
         public function setDescription($description): void{$this->description = $description;}
@@ -24,6 +24,9 @@ namespace app\model {
         public function getCustomerId(){return $this->customer_id;}
         public function getCategoryId(){return $this->category_id;}
 
+        /**
+         * @var array - массив полей таблицы данного класса в БД
+         */
         protected $columns = ['id','name', 'description', 'price', 'customer_id','category_id'];
 
         public function __construct($id = null, $name = null, $description = null, $price = null, $customer_id = null, $category_id = null)
