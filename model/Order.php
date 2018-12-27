@@ -33,7 +33,7 @@ class  Order extends Model{
     {
         parent::__construct();
         $this->id = $id;
-        $this->products = serialize($products);
+        $this->products = serialize($products);//тут тоже сериализуем
         $this->totalPrice = $totalPrice;
         $this->idUser = $idUser;
         $this->date = $date;

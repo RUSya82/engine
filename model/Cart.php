@@ -3,7 +3,7 @@ namespace app\model;
 /**
  * Class Cart
  * @package app\model
- * $products - сериализованный массив типа ['id'=>количество] в строку
+ * $products - сериализованный массив типа ['id'=>количество] в строку, т.к. в БД удобно хранить строку,я так думаю
  * $totalPrice - цена все корзины
  * $idUser - id покупателя
  * $date - Дата
@@ -30,11 +30,11 @@ class  Cart extends Model{
 
     /*********---getters&setters----****/
     public function setId($id){$this->id = $id;}
-    public function setProducts($products){$this->products = serialize($products);}
+    public function setProducts($products){$this->products = serialize($products);}//сериализуем
     public function setIdUser($idUser){$this->idUser = $idUser;}
     public function setDate($date){$this->date = $date;}
     public function getId(){return $this->id;}
-    public function getProducts(){return unserialize($this->products);}
+    public function getProducts(){return unserialize($this->products);} //десериализуем переданный массив
     public function getTotalPrice(){return $this->totalPrice;}
     public function getIdUser(){return $this->idUser;}
     public function getDate(){return $this->date;}
