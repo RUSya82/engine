@@ -5,7 +5,7 @@ class  Cart extends Model{
 
     protected $id;
     protected $products;//сериализованная строка для записи в БД
-    protected $totalPrice;
+    protected $totalPrice;//цена всей корзины
     protected $idUser;
     protected $date;
     protected $columns = ['id', 'products','totalPrice','idUser','date'];
