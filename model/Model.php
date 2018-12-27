@@ -7,7 +7,7 @@ use \app\interfaces\IModel as IModel;
 
 abstract class Model implements IModel
 {
-    public $db;
+    protected $db;
 
 
 

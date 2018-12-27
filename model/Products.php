@@ -8,6 +8,8 @@ namespace app\model {
         public $name;
         public $description;
         public $price;
+        public $customer_id;
+        public $category_id;
         /****---- function from interface IModel----*******/
         public function getTableName(){
             return "products";

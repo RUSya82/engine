@@ -9,6 +9,11 @@ spl_autoload_register([new \app\engine\Autoload(), 'loadClass']);
 
 
 $product = new Products();
+
+foreach ($product as $key=>$value){
+    //if($key !== 'db')
+        echo "{$key} => {$value}<br>";
+}
 //$product->id = 9;
 //$product->delete();
 //var_dump($product);//viev product
