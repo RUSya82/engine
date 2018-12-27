@@ -7,8 +7,9 @@ use app\engine\Db; //можно и так
 
 spl_autoload_register([new \app\engine\Autoload(), 'loadClass']);
 
-
-$product = new Products(null, 'dfhjfgk', 'Nifgjfgjke',650, 6,2);
+$product = (new Products())->getOne(6);
+var_dump($product);
+//$product = new Products(7, 'xcvuijhv', 'Nifgjfgjke',650, 6,2);
 //$i = 0;
 //foreach ($product as $key=>$value){
 //    //if($key !== 'db')
@@ -19,17 +20,17 @@ $product = new Products(null, 'dfhjfgk', 'Nifgjfgjke',650, 6,2);
 //}
 //echo $product->getFields() . "<br>";
 //echo $product->getValues();
-//$product->insert();
+//$product->update();
 //$category = new \app\model\Category(null, 'Санки');
 //$category->insert();
 //$product->id = 9;
 //$product->delete();
-$cart = new \app\model\Cart(null,['35'=>3,'45'=>4,'66'=>5],null,12,'2018-12-27');
-//$cart->setIdUser(35);
-//$cart->setProducts(['15'=>2,'65'=>2]);
-//var_dump($cart);
+//$cart = new \app\model\Cart(null,['35'=>3,'45'=>4,'66'=>5],null,12,'2018-12-27');
+////$cart->setIdUser(35);
+////$cart->setProducts(['15'=>2,'65'=>2]);
+////var_dump($cart);
 //$cart->insert();
-$order = new \app\model\Order(null,['35'=>3,'45'=>4,'66'=>5],null,12,'2018-12-27','sefgweg');
-$order->insert();
+//$order = new \app\model\Order(null,['35'=>3,'45'=>4,'66'=>5],null,12,'2018-12-27','sefgweg');
+//$order->insert();
 
 

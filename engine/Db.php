@@ -61,11 +61,17 @@ class Db
         return true;
     }
     public function queryOne($sql, $param = []) {
+        var_dump($sql);
         return $this->queryAll($sql,$param)[0];
     }
 
     public function queryAll($sql, $param = []) {
         return $this->query($sql, $param)->fetchAll();
+    }
+    public function queryObj($sql, $param = [], $class){
+        $obj = $this->query($sql, $param);
+        $obj -> setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, $class);
+        return $obj->fetch();
     }
 
 }

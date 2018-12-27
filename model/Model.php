@@ -18,9 +18,11 @@ abstract class Model implements IModel
 
     public function getOne($id) {
         $tableName = $this->getTableName();
-        var_dump($tableName);
+        //var_dump($tableName);
         $sql = "SELECT * FROM {$tableName} WHERE id = :id";
-        return $this->db->queryOne($sql, [':id' => $id]);
+        $class = get_class($this);
+        echo $class;
+        return $this->db->queryObj($sql, [':id' => $id], $class);
     }
 
     public function getAll() {
@@ -52,11 +54,20 @@ abstract class Model implements IModel
 
     public function update()
     {
-        //UPDATE `products` SET name=:name, description=:description, price = :price,
-        //customer_id=:customer_id,category_id = :category_id WHERE id = :id
-        //TODO изменить данные
-        //если успеете, хотя бы подумать
-        //это уже если совсем все что выше просто и понятно
+        $sql = "UPDATE {$this->getTableName()} SET {$this->getUpdateFields()} WHERE id = :id";
+        var_dump($sql);
+        return $this->db->execute($sql, $this->getParams());
+
+    }
+    public function getUpdateFields(){
+        $tmp = '';
+        foreach ($this->columns as $val){
+            $tmp .= " $val = :$val,";
+        }
+
+        $tmp = substr_replace( $tmp, '', -1);
+        //var_dump($tmp);
+        return $tmp;
     }
     public function getFields() : string {
 
@@ -72,7 +83,7 @@ abstract class Model implements IModel
     public  function getParams() : array {
         $params =[];
         foreach ($this->columns as $val){
-            echo $val."<br>";
+            //echo $val."<br>";
             $params[':'. $val] = $this->$val;
         }
         var_dump($params);
