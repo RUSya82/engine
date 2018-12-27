@@ -8,12 +8,18 @@ use app\engine\Db; //можно и так
 spl_autoload_register([new \app\engine\Autoload(), 'loadClass']);
 
 
-$product = new Products();
-
-foreach ($product as $key=>$value){
-    //if($key !== 'db')
-        echo "{$key} => {$value}<br>";
-}
+$product = new Products(null, 'Костюм', 'Nike',650, 6,2);
+$i = 0;
+//foreach ($product as $key=>$value){
+//    //if($key !== 'db')
+//        echo "{$key} => {$value}<br>";
+//        $i++;
+//        if($i >= $product->tableFieldsCouns)
+//            break;
+//}
+//echo $product->getFields() . "<br>";
+//echo $product->getValues();
+$product->insert();
 //$product->id = 9;
 //$product->delete();
 //var_dump($product);//viev product

@@ -7,7 +7,7 @@ use \app\interfaces\IModel as IModel;
 
 abstract class Model implements IModel
 {
-    protected $db;
+    public $db;
 
 
 
@@ -29,6 +29,9 @@ abstract class Model implements IModel
         return $this->db->queryAll($sql);
     }
     abstract public function getTableName();
+    abstract public  function getValues() : string;
+    abstract public function getFields();
+    abstract public  function getParams() : array;
     public function delete()
     {
         $tableName = $this->getTableName();
@@ -37,8 +40,8 @@ abstract class Model implements IModel
     }
     public function insert()
     {
-        //TODO добавить данные
-        //То же самое, не нужно передавать параметры, они уже есть в public свойствах класса!
+        $sql = "INSERT INTO {$this->getTableName()} ({$this->getFields()}) VALUES ({$this->getValues()})";
+        return $this->db->execute($sql, $this->getParams());
     }
 
     public function save()
@@ -48,6 +51,8 @@ abstract class Model implements IModel
 
     public function update()
     {
+        //UPDATE `products` SET name=:name, description=:description, price = :price,
+        //customer_id=:customer_id,category_id = :category_id WHERE id = :id
         //TODO изменить данные
         //если успеете, хотя бы подумать
         //это уже если совсем все что выше просто и понятно

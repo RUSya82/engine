@@ -52,7 +52,7 @@ class Db
     private function query($sql, $param =[]){
 
         $statement = $this->getConnection()->prepare($sql);
-        var_dump($statement);
+        //var_dump($statement);
         $statement->execute($param);
         return $statement;
     }
