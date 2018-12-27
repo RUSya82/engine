@@ -1,6 +1,13 @@
 <?php
 namespace app\model;
 
+/**
+ * Class Order - Класс заказа (корзина в доставку)
+ * @package app\model
+ * $deliveryAdress - адрес доставки
+ * $isPayed - оплачен ли заказ
+ * $isDelivered - отправлен ли заказ
+ */
 class  Order extends Model{
 
     protected $id;

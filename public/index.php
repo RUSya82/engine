@@ -6,7 +6,7 @@ use \app\model\Products as Products;    //можно так
 use app\engine\Db; //можно и так
 
 spl_autoload_register([new \app\engine\Autoload(), 'loadClass']);
-
+//пробуем вытащить из БД сразу в объект
 $product = (new Products())->getOne(6);
 var_dump($product);
 $order = (new \app\model\Order())->getOne(2);
