@@ -66,7 +66,7 @@ class  Order extends Model{
 
 
 
-    public function getTableName(){
+    public static function getTableName(){
         return 'orders';
     }
 }

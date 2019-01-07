@@ -87,6 +87,13 @@ class Db
         return $this->queryAll($sql,$param)[0];
     }
 
+    public function queryObject($sql, $params, $class) {
+        $statement = $this->query($sql, $params);
+        $statement -> setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE,$class);
+        return $statement->fetch();
+    }
+
+
     /**
      * Функция для получения нескольких записей из БД
      * @param $sql

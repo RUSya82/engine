@@ -46,7 +46,7 @@ class  Cart extends Model{
     public function getProductById($id){
         //$product = ;
     }
-    public function getTableName()
+    public static function getTableName()
     {
         return 'cart';
     }

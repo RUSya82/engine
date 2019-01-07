@@ -40,9 +40,10 @@ namespace app\model {
             $this->category_id = $category_id;
         }
         /****---- function from interface IModel----*******/
-        public function getTableName(){
+        public static function getTableName(){
             return "products";
         }
+
 
     }
 }

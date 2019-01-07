@@ -26,19 +26,23 @@ abstract class Model implements IModel
      * @param $id - id записи в БД
      * @return mixed - объект класса, который вызвал функцию
      */
-    public function getOne($id) {
-        $sql = "SELECT * FROM {$this->getTableName()} WHERE id = :id";
-        $obj = $this->db->query($sql, [':id'=>$id]);
-        $obj -> setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, get_class($this));
-        return $obj->fetch();
+    public static function getOne($id) {
+        $tableName = static::getTableName();
+        $sql = "SELECT * FROM {$tableName} WHERE id = :id";
+        return Db::getInstance()->queryObject($sql, [':id' => $id], get_called_class());
     }
 
+//    public function getOne($id) {
+//        $tableName = static::getTableName();
+//        $sql = "SELECT * FROM {$tableName} WHERE idx = :id";
+//        return Db::getInstance()->queryObject($sql, [":id" => $id], static::class);
+//    }
     public function getAll() {
         $tableName = $this->getTableName();
         $sql = "SELECT * FROM {$tableName}";
         return $this->db->queryAll($sql);
     }
-    abstract public function getTableName();
+    abstract public static function getTableName();
 
     /**
      * Удаление записи в БД по id
@@ -57,7 +61,8 @@ abstract class Model implements IModel
     public function insert()
     {
         $sql = "INSERT INTO {$this->getTableName()} ({$this->getFields()}) VALUES ({$this->getValues()})";
-        //var_dump($sql);
+        var_dump($sql);
+        var_dump($this->getParams());
         return $this->db->execute($sql, $this->getParams());
     }
 
