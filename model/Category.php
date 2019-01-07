@@ -7,7 +7,7 @@ namespace app\model;
  * @package app\model
  *
  */
-class Category extends Model
+class Category extends DbModel
 {
     protected $id;
     protected $name;

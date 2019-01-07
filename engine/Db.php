@@ -104,5 +104,8 @@ class Db
         return $this->query($sql, $param)->fetchAll();
     }
 
+    public function lastInsertId(){
+        return $this->connect->lastInsertId();
+    }
 
 }

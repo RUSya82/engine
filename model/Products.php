@@ -2,7 +2,7 @@
 
 namespace app\model {
 
-    class Products extends Model
+    class Products extends DbModel
     {
         protected $id;
         protected $name;

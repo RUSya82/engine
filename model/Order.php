@@ -8,7 +8,7 @@ namespace app\model;
  * $isPayed - оплачен ли заказ
  * $isDelivered - отправлен ли заказ
  */
-class  Order extends Model{
+class  Order extends DbModel{
 
     protected $id;
     protected $products;

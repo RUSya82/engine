@@ -3,13 +3,13 @@
  * Created by PhpStorm.
  * User: Salom
  * Date: 07.01.2019
- * Time: 20:49
+ * Time: 20:53
  */
 
-namespace app\model;
+namespace app\controllers;
 
 
-class Model
+class ProductController
 {
 
 }

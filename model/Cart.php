@@ -9,7 +9,7 @@ namespace app\model;
  * $date - Дата
  * $columns - массив с полями БД
  */
-class  Cart extends Model{
+class  Cart extends DbModel{
 
     protected $id;
     protected $products;
