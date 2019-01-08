@@ -1,30 +1,46 @@
 <?php
-define('ROOT_DIR', __DIR__ . "/../");
+//define('ROOT_DIR', __DIR__ . "/../");
+include_once __DIR__ . "/../" . "config/config.php";
 include ROOT_DIR . "engine/Autoload.php";
+
 
 use \app\model\Products as Products;    //можно так
 use app\engine\Db; //можно и так
 
 spl_autoload_register([new \app\engine\Autoload(), 'loadClass']);
+
+$controllerName = $_GET['c'] ?: 'product';
+$actionName = $_GET['a'];
+
+$controllerClass = CONTROLLER_NAMESPACE . ucfirst($controllerName) . 'Controller';
+
+if(class_exists($controllerClass)){
+    $controller = new $controllerClass;
+    $controller->runAction($actionName);
+}
+//var_dump($controller);
+
+
+
 //пробуем вытащить из БД сразу в объект
-$product = (new Products())->getOne(6);
+//$product = (new Products())->getOne(6);
 //var_dump($product);
-$order = (new \app\model\Order())->getOne(2);
+//$order = (new \app\model\Order())->getOne(2);
 //var_dump($order);
-$cart = (new \app\model\Cart()) -> getOne(2);
+//$cart = (new \app\model\Cart()) -> getOne(2);
 //var_dump($cart);
-$category = (new \app\model\Category()) ->getOne(2);
+//$category = (new \app\model\Category()) ->getOne(2);
 //var_dump($category);
 
-$product = new Products(null, 'lhijn', 'lknjbbnj',650, 6,2);
-
-$product->insert();
+//$product = new Products(null, 'lhijn', 'lknjbbnj',650, 6,2);
+//
+//$product->insert();
 
 //$product = Products::getOne(61);
-var_dump($product);
+//var_dump($product);
 //var_dump(get_class_methods($product));
-$user = new \app\model\Users(null,'fhfhfh','656585','toopack');
-$user->insert();
+//$user = new \app\model\Users(null,'fhfhfh','656585','toopack');
+//$user->insert();
 //var_dump($user);
 //$i = 0;
 //foreach ($product as $key=>$value){

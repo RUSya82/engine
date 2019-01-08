@@ -9,7 +9,7 @@
 namespace app\model;
 
 
-class Model
+class Models
 {
 
 }
