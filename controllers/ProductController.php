@@ -5,23 +5,9 @@ namespace app\controllers;
 
 use app\model\Products;
 
-class ProductController
+class ProductController extends Controller
 {
-    private $action;
-    private $defaultAction = 'index';
 
-    public function runAction($action = null){
-        $this->action = $action ?: $this->defaultAction;
-        $method = "action" . ucfirst($this->action);
-        //var_dump($method);
-        if(method_exists($this, $method)){
-            $this->$method();
-        }
-        else{
-            echo "404";
-        }
-
-    }
     public function actionIndex(){
         echo "Index";
     }
@@ -30,13 +16,10 @@ class ProductController
     }
     public function actionCard(){
         $id = $_GET['id'];
+        //var_dump($id);
         $product = Products::getOne($id);
-        echo "Card";
+        //var_dump($product);
+        echo $this->render('card', ['product' => $product]);
     }
-    public function renderTemplate($template, $params = []){
-        ob_start();
-        $templatePath = TEMPLATES_DIR . $template . '.php';
-        include $templatePath;
-        return ob_get_clean();
-    }
+
 }
