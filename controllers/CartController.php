@@ -21,11 +21,5 @@ class CartController extends Controller
             echo $this->render('cart',['product'=>$product,'count'=>$value]);
         }
     }
-   // public function actionCard(){
-//        $id = $_GET['id'];
-//        //var_dump($id);
-//        $product = Products::getOne($id);
-//        //var_dump($product);
-//        echo $this->render('card', ['product' => $product]);
-//    }
+
 }
