@@ -37,10 +37,10 @@ abstract class DbModel implements IModel
 //        $sql = "SELECT * FROM {$tableName} WHERE idx = :id";
 //        return Db::getInstance()->queryObject($sql, [":id" => $id], static::class);
 //    }
-    public function getAll() {
-        $tableName = $this->getTableName();
+    public static function getAll() {
+        $tableName = static::getTableName();
         $sql = "SELECT * FROM {$tableName}";
-        return $this->db->queryAll($sql);
+        return Db::getInstance()->queryAll($sql);
     }
     abstract public static function getTableName();
 

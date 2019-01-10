@@ -12,7 +12,13 @@ class ProductController extends Controller
         echo "Index";
     }
     public function actionCatalog(){
-        echo "Catalog";
+        $products = Products::getAll();
+        //var_dump($products);
+        foreach ($products as $value){
+            $product = Products::getOne($value['id']);
+            echo $this->render('card', ['product' => $product]);
+            //var_dump($value);
+        }
     }
     public function actionCard(){
         $id = $_GET['id'];
