@@ -15,7 +15,7 @@ abstract class DbModel implements IModel
      * а в каждом потомке просто будет свой columns, точнее заполнен по своему. Понимаю, что это наверное своего рода костыль
      * но ничего другого я придумать не смог(
     */
-
+    protected $changedColumns = [];
     public function __construct()
     {
        $this->db = Db::getInstance();
@@ -78,8 +78,9 @@ abstract class DbModel implements IModel
     public function update()
     {
         $sql = "UPDATE {$this->getTableName()} SET {$this->getUpdateFields()} WHERE id = :id";
-        //var_dump($sql);
-        return $this->db->execute($sql, $this->getParams());
+        var_dump($this->getUpdateParams());
+        //$this->changedColumns = [];
+        return $this->db->execute($sql, $this->getUpdateParams());
 
     }
 
@@ -89,12 +90,35 @@ abstract class DbModel implements IModel
      */
     public function getUpdateFields(){
         $tmp = '';
-        foreach ($this->columns as $val){
-            $tmp .= " $val = :$val,";
+        //var_dump($this->changedColumns);
+        if(!empty($this->changedColumns)){
+            $this->changedColumns = array_unique($this->changedColumns);
+            foreach ($this->changedColumns as $value){
+                $tmp .= "{$this->columns[$value]} = :{$this->columns[$value]},";
+            }
         }
+//        foreach ($this->columns as $val){
+//            $tmp .= " $val = :$val,";
+//        }
         $tmp = substr_replace( $tmp, '', -1);
-        //var_dump($tmp);
         return $tmp;
+    }
+    public  function getUpdateParams() : array {
+        $params =[];
+        $params[':id'] = $this->getId();
+        if(!empty($this->changedColumns)){
+            $this->changedColumns = array_unique($this->changedColumns);
+            foreach ($this->changedColumns as $value){
+                $temp = $this->columns[$value];
+                //var_dump($temp);
+                $params[':'. $temp] = $this->$temp;
+            }
+        }
+//        foreach ($this->columns as $val){
+//            $params[':'. $val] = $this->$val;
+//        }
+        //var_dump($params);
+        return $params;
     }
     /**
      * подготавливает строку из массива columns для запроса в виде 'id, name, description ...'

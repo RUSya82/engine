@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Дек 27 2018 г., 21:07
+-- Время создания: Янв 10 2019 г., 22:31
 -- Версия сервера: 5.6.41
 -- Версия PHP: 7.1.22
 
@@ -41,9 +41,9 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `products`, `totalPrice`, `idUser`, `date`) VALUES
-(1, 'a:3:{i:35;i:3;i:45;i:4;i:66;i:5;}', NULL, 12, '2018-12-27'),
+(1, 'a:3:{i:35;i:3;i:45;i:4;i:66;i:5;}', NULL, 15, '2018-12-27'),
 (2, 'a:3:{i:35;i:3;i:45;i:4;i:66;i:5;}', NULL, 12, '2018-12-27'),
-(3, 'a:3:{i:35;i:3;i:45;i:4;i:66;i:5;}', NULL, 12, '2018-12-27');
+(3, 'a:3:{i:35;i:3;i:45;i:4;i:66;i:5;}', NULL, 16, '2018-12-27');
 
 -- --------------------------------------------------------
 
@@ -122,8 +122,19 @@ INSERT INTO `products` (`id`, `name`, `description`, `price`, `customer_id`, `ca
 (7, 'xcvuijhv', 'Nifgjfgjke', 650, 6, 2),
 (8, 'костюм Abibas', 'настоящий', 125, 4, 2),
 (10, 'Костюм', 'Nike', 650, 6, 2),
-(45, 'dfhjfgk', 'Nifgjfgjke', 650, 6, 2),
-(46, 'Снежок', 'лыжи деревянные', 100, 4, 3);
+(35, 'Футболка', 'шелк', 650, 6, 2),
+(45, 'Майка', 'Хлопок', 650, 6, 2),
+(46, 'Снежок', 'лыжи деревянные', 100, 4, 3),
+(61, 'lhijn', 'lknjbbnj', 650, 6, 2),
+(62, 'lhijn', 'lknjbbnj', 650, 6, 2),
+(64, 'lhijn', 'lknjbbnj', 650, 6, 2),
+(65, 'lhijn', 'lknjbbnj', 650, 6, 2),
+(66, 'Шорты', 'Плавательные', 650, 6, 2),
+(67, 'lhijn', 'lknjbbnj', 650, 6, 2),
+(68, 'lhijn', 'lknjbbnj', 650, 6, 2),
+(69, 'lhijn', 'lknjbbnj', 650, 6, 2),
+(70, 'lhijn', 'lknjbbnj', 650, 6, 2),
+(71, 'lhijn', 'lknjbbnj', 650, 6, 2);
 
 -- --------------------------------------------------------
 
@@ -145,7 +156,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `login`, `password`, `userName`) VALUES
 (1, 'admin', '12345', 'Alik'),
 (3, 'Katya', '111', 'Kate'),
-(4, 'Vas92', '555', 'Vasya');
+(4, 'Vas92', '555', 'Vasya'),
+(5, 'fhfhfh', '656585', 'toopack');
 
 --
 -- Индексы сохранённых таблиц
@@ -195,7 +207,7 @@ ALTER TABLE `cart`
 -- AUTO_INCREMENT для таблицы `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT для таблицы `orders`
@@ -207,13 +219,13 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT для таблицы `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

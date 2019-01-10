@@ -59,7 +59,7 @@ class Db
      * @return bool|\PDOStatement возвращает объект PDOStatment - результат запроса
      */
     public function query($sql, $param =[]){
-
+        //var_dump($param);
         $statement = $this->getConnection()->prepare($sql);
         $statement->execute($param);
         return $statement;
