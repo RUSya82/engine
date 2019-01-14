@@ -15,7 +15,7 @@ $actionName = $_GET['a'];
 $controllerClass = CONTROLLER_NAMESPACE . ucfirst($controllerName) . 'Controller';
 
 if(class_exists($controllerClass)){
-    $controller = new $controllerClass;
+    $controller = new $controllerClass(new \app\engine\Render());
     $controller->runAction($actionName);
 }
 $product = Products::getOne(7);
