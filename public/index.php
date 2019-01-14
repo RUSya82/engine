@@ -33,7 +33,7 @@ $product = Products::getOne(7);
 //var_dump($product);
 $product->setName('Кольсоны');
 //$product->setPrice(50);
-$product->setDescription('dakfjgbi8');
+$product->setDescription('tttttttttttt');
 //var_dump($product);
 $product->save();
 //var_dump($controller);

@@ -6,8 +6,8 @@ namespace app\model {
     {
         protected $id;
         public $name;
-        protected $description;
-        protected $price;
+        public $description;
+        public $price;
         protected $customer_id;
         protected $category_id;
         /**********----getters&setters----**********/

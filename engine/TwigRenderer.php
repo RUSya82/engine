@@ -13,14 +13,15 @@ use app\interfaces\IRenderer;
 
 class TwigRenderer implements IRenderer
 {
-    protected $loader;
-    public function renderTemplate($template, $params = []) {
-       // $loader = new Twig_Loader_Filesystem(ROOT_DIR . 'templates');
+    protected $twig;
 
-    }
-    public function __construct($loader)
+    public function __construct($twig)
     {
-        $this->loader = $loader;
+        $this->twig = $twig;
     }
-
+    public function renderTemplate($template, $params = [])
+    {
+        var_dump($params);
+        echo $this->twig->render($template, $params);
+    }
 }

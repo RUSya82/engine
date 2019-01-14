@@ -1,0 +1,7 @@
+
+{% for item in products %}
+<b><a href="?c=product&a=card&id={{ item.id }}">{{ item.name }}</a></b>
+<p>{{ item.description }}</p>
+<p>Стоимость: {{ item.price }}</p>
+{% endfor %}
+
