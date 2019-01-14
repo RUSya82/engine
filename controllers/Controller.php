@@ -26,7 +26,7 @@ class Controller implements IRenderer
             $this->$method();
         }
         else{
-            echo "404";
+            echo "<br>Not found 404<br>";
         }
 
     }

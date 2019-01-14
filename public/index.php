@@ -18,14 +18,18 @@ if(class_exists($controllerClass)){
     $controller = new $controllerClass(new \app\engine\Render());
     $controller->runAction($actionName);
 }
+echo "<br><a href='?c=product&a=catalog'>Каталог</a><br>";
+echo "<a href='?c=product&a=card&id=7'>Карточка товара</a><br>";
+echo "<a href='?c=cart&a=cart&id=2'>Корзина</a><br>";
 $product = Products::getOne(7);
 //var_dump($product);
 $product->setName('Кольсоны');
 //$product->setPrice(50);
-$product->setDescription('теплые');
+$product->setDescription('dakfjgbi8');
 //var_dump($product);
 $product->save();
 //var_dump($controller);
+?>
 
 
 

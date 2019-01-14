@@ -78,9 +78,11 @@ abstract class DbModel implements IModel
     public function update()
     {
         $sql = "UPDATE {$this->getTableName()} SET {$this->getUpdateFields()} WHERE id = :id";
+        var_dump($this->getUpdateFields());
         var_dump($this->getUpdateParams());
-        //$this->changedColumns = [];
-        return $this->db->execute($sql, $this->getUpdateParams());
+        $updateParams = $this->getUpdateParams();
+        $this->changedColumns = [];
+        return $this->db->execute($sql, $updateParams);
 
     }
 
