@@ -28,7 +28,7 @@ class ProductController extends Controller
         $id = $_GET['id'];
         //var_dump($id);
         $product = Products::getOne($id);
-        //var_dump($product);
+        var_dump($product);
         echo $this->render('card', ['product' => $product]);
     }
 
