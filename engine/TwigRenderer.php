@@ -21,7 +21,7 @@ class TwigRenderer implements IRenderer
     }
     public function renderTemplate($template, $params = [])
     {
-        var_dump($params);
+       // var_dump($params);
         echo $this->twig->render($template, $params);
     }
 }

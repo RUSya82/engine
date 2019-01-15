@@ -15,12 +15,6 @@ $actionName = $_GET['a'];
 $controllerClass = CONTROLLER_NAMESPACE . ucfirst($controllerName) . 'Controller';
 $loader = new Twig_Loader_Filesystem(ROOT_DIR . 'templates');
 
-
-
-
-
-
-
 if(class_exists($controllerClass)){
     //$controller = new $controllerClass(new \app\engine\Render());
     $controller = new $controllerClass(new \app\engine\TwigRenderer(new Twig_Environment($loader)));
@@ -37,6 +31,7 @@ $product->setDescription('tttttttttttt');
 //var_dump($product);
 $product->save();
 //var_dump($controller);
+$cart
 ?>
 
 

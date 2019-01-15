@@ -105,6 +105,10 @@ abstract class DbModel implements IModel
         $tmp = substr_replace( $tmp, '', -1);
         return $tmp;
     }
+
+    /**
+     * @return array Ассоциативный массив с параметрами для передачи в функцию update()
+     */
     public  function getUpdateParams() : array {
         $params =[];
         $params[':id'] = $this->getId();
