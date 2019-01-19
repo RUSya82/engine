@@ -14,7 +14,7 @@ class CartController extends Controller
         $id = $_GET['id'];
         $cart = Cart::getOne($id);
         $idProducts = $cart->getProducts();
-        var_dump($idProducts);
+        //var_dump($idProducts);
         foreach ($idProducts as $key=>$value){
             $product = Products::getOne($key);
             //var_dump($product);

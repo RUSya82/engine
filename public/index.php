@@ -13,11 +13,11 @@ $controllerName = $_GET['c'] ?: 'product';
 $actionName = $_GET['a'];
 
 $controllerClass = CONTROLLER_NAMESPACE . ucfirst($controllerName) . 'Controller';
-$loader = new Twig_Loader_Filesystem(ROOT_DIR . 'templates');
+//$loader = new Twig_Loader_Filesystem(ROOT_DIR . 'templates');
 
 if(class_exists($controllerClass)){
-    //$controller = new $controllerClass(new \app\engine\Render());
-    $controller = new $controllerClass(new \app\engine\TwigRenderer(new Twig_Environment($loader)));
+    $controller = new $controllerClass(new \app\engine\Render());
+    //$controller = new $controllerClass(new \app\engine\TwigRenderer());
     $controller->runAction($actionName);
 }
 echo "<br><a href='?c=product&a=catalog'>Каталог</a><br>";
@@ -27,7 +27,7 @@ $product = Products::getOne(7);
 //var_dump($product);
 $product->setName('Кольсоны');
 //$product->setPrice(50);
-$product->setDescription('tttttttttttt');
+$product->setDescription('gehndkdfg');
 //var_dump($product);
 $product->save();
 //var_dump($controller);

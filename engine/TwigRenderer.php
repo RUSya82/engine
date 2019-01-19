@@ -15,9 +15,10 @@ class TwigRenderer implements IRenderer
 {
     protected $twig;
 
-    public function __construct($twig)
+    public function __construct()
     {
-        $this->twig = $twig;
+        $loader = new \Twig_Loader_Filesystem(ROOT_DIR . 'templates');
+        $this->twig = new \Twig_Environment($loader);
     }
     public function renderTemplate($template, $params = [])
     {
