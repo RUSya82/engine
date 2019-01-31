@@ -6,11 +6,15 @@ require_once ROOT_DIR . "vendor/autoload.php";
 
 use \app\model\Products as Products;    //можно так
 use app\engine\Db; //можно и так
-
+use app\engine\Request;
 spl_autoload_register([new \app\engine\Autoload(), 'loadClass']);
 
-$controllerName = $_GET['c'] ?: 'product';
-$actionName = $_GET['a'];
+$request = new Request();
+var_dump($request);
+$controllerName = $request->getControllerName()?: 'product';
+$actionName = $request->getActionName();
+//$controllerName = $_GET['c'] ?: 'product';
+//$actionName = $_GET['a'];
 
 $controllerClass = CONTROLLER_NAMESPACE . ucfirst($controllerName) . 'Controller';
 //$loader = new Twig_Loader_Filesystem(ROOT_DIR . 'templates');
@@ -20,9 +24,9 @@ if(class_exists($controllerClass)){
     //$controller = new $controllerClass(new \app\engine\TwigRenderer());
     $controller->runAction($actionName);
 }
-echo "<br><a href='?c=product&a=catalog'>Каталог</a><br>";
-echo "<a href='?c=product&a=card&id=7'>Карточка товара</a><br>";
-echo "<a href='?c=cart&a=cart&id=2'>Корзина</a><br>";
+echo "<br><a href='/product/catalog/'>Каталог</a><br>";
+echo "<a href='/product/card/?id=7'>Карточка товара</a><br>";
+echo "<a href='/cart/cart/?id=2'>Корзина</a><br>";
 $product = Products::getOne(7);
 //var_dump($product);
 $product->setName('Кольсоны');
