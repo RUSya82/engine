@@ -10,9 +10,10 @@ use app\engine\Request;
 spl_autoload_register([new \app\engine\Autoload(), 'loadClass']);
 
 $request = new Request();
-var_dump($request);
+//var_dump($request);
 $controllerName = $request->getControllerName()?: 'product';
 $actionName = $request->getActionName();
+//var_dump($actionName);
 //$controllerName = $_GET['c'] ?: 'product';
 //$actionName = $_GET['a'];
 

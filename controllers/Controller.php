@@ -19,7 +19,9 @@ class Controller implements IRenderer
     }
 
     public function runAction($action = null){
+
         $this->action = $action ?: $this->defaultAction;
+        //var_dump($action);
         $method = "action" . ucfirst($this->action);
         //var_dump($method);
         if(method_exists($this, $method)){

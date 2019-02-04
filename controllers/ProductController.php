@@ -10,9 +10,14 @@ class ProductController extends Controller
 
     public function actionIndex(){
 
-        echo "Index";
-//        echo "<a href='?c=product&a=catalog'>Каталог</a><br>";
-//        echo "<a href='?c=product&a=card'>Карточка товара</a><br>";
+        $products = Products::getAll();
+        //var_dump($products);
+        echo $this->render('catalog', ['products' => $products]);
+//        foreach ($products as $value){
+//            $product = Products::getOne($value['id']);
+//            echo $this->render('card', ['product' => $product]);
+//            //var_dump($value);
+//        }
     }
     public function actionCatalog(){
         $products = Products::getAll();

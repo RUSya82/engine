@@ -13,17 +13,17 @@ class  Cart extends DbModel{
 
     protected $id;
     protected $products;
-    protected $totalPrice;
+    //protected $totalPrice;
     protected $idUser;
     protected $date;
-    protected $columns = ['id', 'products','totalPrice','idUser','date'];
+    protected $columns = ['id', 'products','idUser','date'];
 
-    public function __construct($id=null, array $products=null, $totalPrice=null, $idUser=null, $date=null)
+    public function __construct($id=null, array $products=null, $idUser=null, $date=null)
     {
         parent::__construct();
         $this->id = $id;
         $this->products = serialize($products);
-        $this->totalPrice = $totalPrice;
+//        $this->totalPrice = $totalPrice;
         $this->idUser = $idUser;
         $this->date = $date;
     }
@@ -35,7 +35,7 @@ class  Cart extends DbModel{
     public function setDate($date){$this->date = $date;}
     public function getId(){return $this->id;}
     public function getProducts(){return unserialize($this->products);} //десериализуем переданный массив
-    public function getTotalPrice(){return $this->totalPrice;}
+    //public function getTotalPrice(){return $this->totalPrice;}
     public function getIdUser(){return $this->idUser;}
     public function getDate(){return $this->date;}
     /****---- Расчет цены корзины(заказа)----*******/
@@ -43,9 +43,7 @@ class  Cart extends DbModel{
         //пока заглушка
         return 355;
     }
-    public function getProductById($id){
-        //$product = ;
-    }
+
     public static function getTableName()
     {
         return 'cart';

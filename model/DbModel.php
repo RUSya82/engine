@@ -62,7 +62,7 @@ abstract class DbModel implements IModel
     {
         $sql = "INSERT INTO {$this->getTableName()} ({$this->getFields()}) VALUES ({$this->getValues()})";
         var_dump($sql);
-        var_dump($this->getParams());
+        //var_dump($this->getParams());
         $this->db->execute($sql, $this->getParams());
         $this->setId($this->db->lastInsertId());
     }
