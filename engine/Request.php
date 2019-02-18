@@ -34,6 +34,7 @@ class Request
      */
     public function getControllerName()
     {
+        var_dump($this->controllerName);
         return $this->controllerName;
     }
 
@@ -42,6 +43,7 @@ class Request
      */
     public function getActionName()
     {
+        var_dump($this->actionName);
         return $this->actionName;
     }
 
@@ -50,6 +52,7 @@ class Request
      */
     public function getParams()
     {
+        var_dump($this->params);
         return $this->params;
     }
 

@@ -13,7 +13,7 @@ $request = new Request();
 //var_dump($request);
 $controllerName = $request->getControllerName()?: 'product';
 $actionName = $request->getActionName();
-//var_dump($actionName);
+var_dump($controllerName);
 //$controllerName = $_GET['c'] ?: 'product';
 //$actionName = $_GET['a'];
 
