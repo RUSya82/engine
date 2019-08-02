@@ -21,6 +21,8 @@ class CartController extends Controller
     public function actionCart(){
         $id = $_GET['id'];
         $cart = Cart::getOne($id);
+
+
         $idProducts = $cart->getProducts();
         //var_dump($idProducts);
         foreach ($idProducts as $key=>$value){
